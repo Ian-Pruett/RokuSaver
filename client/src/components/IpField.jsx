@@ -10,14 +10,14 @@ import { Context } from "./stores/Store";
 
 function IpField() {
 
-	const [state, dispatch] = React.useContext(Context);
+  const [state, dispatch] = React.useContext(Context);
 
-	const setAddr = (e) => {
-		dispatch({
-			type: 'SET_ADDR', 
-			payload: e
-		});
-	};
+  const setAddr = (e) => {
+    dispatch({
+      type: 'SET_ADDR',
+      payload: e
+    });
+  };
 
   return (
     <Container>
@@ -25,7 +25,7 @@ function IpField() {
         <Col sm={{ span: 8, offset: 2 }} md={{ span: 4, offset: 4 }}>
           <InputGroup>
             <InputGroup.Text value="hi">Roku IP Address</InputGroup.Text>
-            <FormControl onChange={(e) => { setAddr(e.target.value) }}/>
+            <FormControl onChange={(e) => { setAddr(e.target.value) }} />
           </InputGroup>
         </Col>
       </Row>

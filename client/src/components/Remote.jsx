@@ -28,9 +28,9 @@ function Remote() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 
-        addr:state.addr, 
-        key: val 
+      body: JSON.stringify({
+        addr: state.addr,
+        key: val
       })
     };
     fetch(url, requestOptions)

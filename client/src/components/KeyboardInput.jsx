@@ -23,9 +23,9 @@ function KeyboardInput() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         addr: state.addr,
-        key: val 
+        key: val
       })
     };
     fetch(url, requestOptions)

@@ -3,17 +3,17 @@ import Reducer from './Reducer'
 
 
 const initialState = {
-	addr: "",
-	error: null
+  addr: "",
+  error: null
 };
 
 const Store = ({ children }) => {
-	const [state, dispatch] = useReducer(Reducer, initialState);
-	return (
-		<Context.Provider value={[state, dispatch]}>
-			{children}
-		</Context.Provider>
-	)
+  const [state, dispatch] = useReducer(Reducer, initialState);
+  return (
+    <Context.Provider value={[state, dispatch]}>
+      {children}
+    </Context.Provider>
+  )
 };
 
 export const Context = createContext(initialState);
