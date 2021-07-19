@@ -17,20 +17,20 @@ app.get('/api/test', (req, res) => {
 });
 
 app.post('/api/keypress', (req, res) => {
-    const ip = '...';
+    const addr = '192.168.2.27';
     const body = req.body;
     const url = `http://${addr}:8060/keypress/${body.key}`;
     const press = async (url) => {
         try {
             const response = await axios.post(url);
             const data = response.data
-            console.log(data)
         } catch {
-            console.log(error)
+            console.log(`failed to process request to ${url}`)
         }
     };
     press(url);
     res.send({ "code": 200 });
+    console.log(url)
 })
 
 app.listen(port, () => {
