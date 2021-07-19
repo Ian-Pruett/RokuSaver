@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Context } from './stores/Store';
 import {
   BsArrowLeftShort, BsFillHouseFill, BsArrowUp, BsArrowLeft,
   BsArrowRight, BsArrowDown, BsArrowCounterclockwise, BsGear,
@@ -13,7 +14,13 @@ import {
 
 function Remote() {
 
+  const [state, dispatch] = React.useContext(Context);
+
   const onButtonClick = (val) => {
+    if (state.addr === "") {
+      alert("Please set IP Address");
+      return;
+    }
     const url = '/api/keypress';
     const requestOptions = {
       method: 'post',
@@ -21,7 +28,10 @@ function Remote() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ key: val })
+      body: JSON.stringify({ 
+        addr:state.addr, 
+        key: val 
+      })
     };
     fetch(url, requestOptions)
   }

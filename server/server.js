@@ -17,8 +17,9 @@ app.get('/api/test', (req, res) => {
 });
 
 app.post('/api/keypress', (req, res) => {
-    const addr = '192.168.2.27';
+    // const addr = '192.168.2.27';
     const body = req.body;
+    const addr = body.addr;
     const url = `http://${addr}:8060/keypress/${body.key}`;
     const press = async (url) => {
         try {
