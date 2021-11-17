@@ -5,40 +5,22 @@ import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Context } from './stores/Store';
+import { sendCommand } from "../modules/RokuPress";
 
 
 function KeyboardInput() {
 
   const [state, dispatch] = React.useContext(Context);
 
-  const sendCommand = (val) => {
-    const url = '/api/keypress';
-    if (state.addr === "") {
-      alert("Please set IP Address");
-      return;
-    }
-    const requestOptions = {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        addr: state.addr,
-        key: val
-      })
-    };
-    fetch(url, requestOptions)
-  }
-
   const processKeyDown = (key) => {
+    let addr = state.addr;
     let press = key;
     if (key.length === 1) {
       press = `LIT_${escape(press)}`;
-      sendCommand(press);
+      sendCommand(state.addr, press);
     }
     if (press === 'Backspace') {
-      sendCommand(press);
+      sendCommand(addr, press);
     }
   };
 
